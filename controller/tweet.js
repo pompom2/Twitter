@@ -15,7 +15,7 @@ export async function getTweet(req, res, next) {
     if(tweet) {
         res.status(200).json(tweet);
     }else {
-        res.stutus(400).json({message: `${id}의 트윗이 없습니다`})
+        res.status(400).json({message: `${id}의 트윗이 없습니다`})
     }
 }
 
