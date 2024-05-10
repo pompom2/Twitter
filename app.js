@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 
 connectDB().then((db) => {
-    console.log('몽고DB 연결 성공!!');
+    console.log('몽구스를 사용하여 몽고디비에 접속 성공!');
     app.listen(config.host.port);
 }).catch(console.error);
 

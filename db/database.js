@@ -1,9 +1,20 @@
 import { config } from '../config.js';
-import MongoDB from 'mongodb';
-let db;
+import Mongoose from 'mongoose';
+
 export async function connectDB(){
-    return MongoDB.MongoClient.connect(config.db.host).then((client) => db = client.db());
+    return Mongoose.connect(config.db.host);
 }
+
+export function useVirtualId(schema){ 
+    schema.virtual('id').get(function(){
+        return this._id.toString();
+    });
+    schema.set('toJSN', {virtuals:true});
+    schema.set('toObject', {virtuals:true});
+}
+
+let db;
+
 export function getUsers(){
     return db.collection('users');   //데이터를 넣을 때 users객체에 넣겠다
 }
